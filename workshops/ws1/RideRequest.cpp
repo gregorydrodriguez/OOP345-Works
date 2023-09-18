@@ -38,7 +38,7 @@ std::istream& RideRequest::read(std::istream& is) {
         is.getline(m_custDetails, std::numeric_limits<std::streamsize>::max(), ',');
         is >> m_price;
         is.ignore(std::numeric_limits<std::streamsize>::max(), ',');
-        char discount;
+        char discount{};
         is >> discount;
         is.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
         if (discount == 'N') {
