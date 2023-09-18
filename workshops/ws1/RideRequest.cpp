@@ -9,6 +9,7 @@ Student #: 127880227
 #include <iomanip>
 #include <iostream>
 #include <limits>
+#include <cstring>
 
 double g_taxrate;
 double g_discount;
