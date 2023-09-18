@@ -1,0 +1,61 @@
+/*
+I have done all the coding by myself and only copied the code that my professor provided to complete my workshops and assignments.
+Name: Gregory Rodriguez
+E-mail: grodriguez13@myseneca.ca
+Student #: 127880227
+*/
+
+Reflection 1
+
+1. Receive program arguments from the command line
+
+In this workshop we had learned the value of parameters being passed through
+the main function, i.e., argc & argv. Related to what we learned in ULI, argc
+is essentially the argument count, plus 1 for the name of the program, in the command
+line. 
+
+argv is an array of char arrays and supposedly stands for argument vector. Each word 
+typed in the command line as an argument/flag will be stored in each index of argv.
+
+Note: these can be named whatever you want them to be.
+Example: (we created a executable called ws in our workshop)
+ws rides1.txt rides2.txt
+argc would be 3 
+argv[0] == ws
+argv[1] == rides1.txt
+argv[2] == rides2.txt
+
+2. Guard a class definition from duplication in a translation unit
+
+Usage:
+    #ifndef SDDS_RIDEREQUEST_H
+    #define SDDS_RIDEREQUEST_H
+    ...
+    #endif // SDDS_RIDEREQUEST_H
+
+#ifndef Checks if SDDS_RIDEREQUEST_H is not defined. If it is not defined, this will be
+the point of instantiation for the header file to be included.
+#define Defines SDDS_RIDEREQUEST_H if it has not yet been defined.
+...
+anything in between is the scope of class definition, variables, and declarations
+...
+#endif Ends the include guard, and makes sure the class definition is only processed once in
+every associated source code file. This prevents errors, as duplicate definitions may cause
+issues.
+
+3. Access a variable defined in a different translation unit
+
+Translation units can be an individual source code file or a module (cpp + h files).
+We use the word extern in our RideRequest.h file for g_discount & g_taxrate. This indicates
+that these values are defined in another source code file
+
+4. Declare a local variable that resides in memory throughout the lifetime of the program
+
+A local variable will lose any values assigned to it when out of scope. When we use the keyword
+"static" before a local variable it will keep and update it's value until the end of the program.
+
+5. Upgrade code to accept and manage a user-defined string of any length
+
+When we use the std::string datatype to create a string object, it can hold any dynamic
+size of length via characters. The string class has many methods that can be used, such as
+length(), size(), c_str(), etc.

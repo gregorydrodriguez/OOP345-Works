@@ -6,10 +6,10 @@ Student #: 127880227
 */
 #include "RideRequest.h"
 
+#include <cstring>
 #include <iomanip>
 #include <iostream>
 #include <limits>
-#include <cstring>
 
 double g_taxrate;
 double g_discount;
@@ -17,6 +17,7 @@ double g_discount;
 namespace sdds {
 RideRequest::RideRequest(const RideRequest& src) {
     strcpy(m_custName, src.m_custName);
+    m_custDetails = new char[strlen(src.m_custDetails) + 1];
     strcpy(m_custDetails, src.m_custDetails);
     m_price = src.m_price;
     m_discount = src.m_discount;
@@ -25,6 +26,8 @@ RideRequest::RideRequest(const RideRequest& src) {
 RideRequest& RideRequest::operator=(RideRequest& src) {
     if (this != &src) {
         strcpy(m_custName, src.m_custName);
+        delete[] m_custDetails;
+        m_custDetails = new char[strlen(src.m_custDetails) + 1];
         strcpy(m_custDetails, src.m_custDetails);
         m_price = src.m_price;
         m_discount = src.m_discount;
@@ -32,10 +35,22 @@ RideRequest& RideRequest::operator=(RideRequest& src) {
     return *this;
 }
 
+RideRequest::~RideRequest() {
+    delete[] m_custDetails;
+}
+
 std::istream& RideRequest::read(std::istream& is) {
     if (is) {
         is.getline(m_custName, std::numeric_limits<std::streamsize>::max(), ',');
-        is.getline(m_custDetails, std::numeric_limits<std::streamsize>::max(), ',');
+        std::string s;
+        std::getline(is, s, ',');
+        // NOTE: std::getline(is, s) is the same as std::getline(is, s, '\n')
+        m_custDetails = new char[s.length() + 1];
+        strcpy(m_custDetails, s.c_str());
+        // char details[255];
+        // is.getline(details, std::numeric_limits<std::streamsize>::max(), ',');
+        // m_custDetails = new char[strlen(details) + 1];
+        // strcpy(m_custDetails, details);
         is >> m_price;
         is.ignore(std::numeric_limits<std::streamsize>::max(), ',');
         char discount{};

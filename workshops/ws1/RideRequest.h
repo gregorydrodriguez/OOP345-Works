@@ -16,13 +16,14 @@ namespace sdds {
 
 class RideRequest {
     char m_custName[10]{};
-    char m_custDetails[25]{};
+    char* m_custDetails{};
     double m_price{};
     bool m_discount{};
 
    public:
     RideRequest(){};
     RideRequest(const RideRequest& src);
+    ~RideRequest();
     RideRequest& operator=(RideRequest& src);
     std::istream& read(std::istream& is);
     void display();
