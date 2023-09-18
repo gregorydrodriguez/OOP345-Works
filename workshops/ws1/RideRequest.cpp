@@ -17,7 +17,6 @@ double g_discount;
 namespace sdds {
 RideRequest::RideRequest(const RideRequest& src) {
     strcpy(m_custName, src.m_custName);
-    delete[] m_custDetails;
     m_custDetails = new char[strlen(src.m_custDetails) + 1];
     strcpy(m_custDetails, src.m_custDetails);
     m_price = src.m_price;
@@ -46,6 +45,7 @@ std::istream& RideRequest::read(std::istream& is) {
         std::string s;
         std::getline(is, s, ',');
         // NOTE: std::getline(is, s) is the same as std::getline(is, s, '\n')
+        delete[] m_custDetails;
         m_custDetails = new char[s.length() + 1];
         strcpy(m_custDetails, s.c_str());
         // char details[255];
