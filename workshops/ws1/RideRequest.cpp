@@ -63,6 +63,9 @@ void RideRequest::display() {
             std::cout << std::right << std::setw(13) << std::fixed << std::setprecision(2) << discountFullPrice;
         }
         std::cout << std::endl;
+    } else {
+        std::cout << std::left << std::setw(2) << ++counter << ". ";
+        std::cout << "No Ride Request" << std::endl;
     }
 }
 }  // namespace sdds
