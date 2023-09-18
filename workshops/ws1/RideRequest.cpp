@@ -17,6 +17,7 @@ double g_discount;
 namespace sdds {
 RideRequest::RideRequest(const RideRequest& src) {
     strcpy(m_custName, src.m_custName);
+    delete[] m_custDetails;
     m_custDetails = new char[strlen(src.m_custDetails) + 1];
     strcpy(m_custDetails, src.m_custDetails);
     m_price = src.m_price;
