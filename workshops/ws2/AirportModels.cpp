@@ -68,7 +68,7 @@ AirportLog::AirportLog(char* filename) {
         log.clear();
         log.seekg(0, std::ios::beg);
         std::getline(log, line, '\n');
-        int i = 0;
+        size_t i = 0;
         while (log) {
             std::getline(log, m_airports[i].m_code, ',');
             std::getline(log, m_airports[i].m_name, ',');
@@ -84,7 +84,7 @@ AirportLog::AirportLog(char* filename) {
     }
 }
 
-AirportLog::AirportLog(AirportLog& src) {
+AirportLog::AirportLog(const AirportLog& src) {
     m_count = src.m_count;
     m_airports = new Airport[m_count];
     for (size_t i = 0; i < m_count; i++) {
@@ -92,7 +92,7 @@ AirportLog::AirportLog(AirportLog& src) {
     }
 }
 
-AirportLog* AirportLog::operator=(AirportLog& src) {
+AirportLog* AirportLog::operator=(const AirportLog& src) {
     if (this != &src) {
         m_count = src.m_count;
         m_airports = new Airport[m_count];
@@ -107,6 +107,23 @@ AirportLog::~AirportLog() {
     delete[] m_airports;
 }
 
+AirportLog::AirportLog(AirportLog&& src) {
+    m_count = src.m_count;
+    m_airports = src.m_airports;
+    src.m_count = 0;
+    src.m_airports = nullptr;
+}
+/*
+AirportLog& operator=(AirportLog&& src) {
+        if(this != &src) {
+            delete[] m_airports;
+            m_count = src.m_count;
+            m_airports = src.m_airports;
+            src.m_count = 0;
+            src.m_airports = nullptr;
+        }
+}
+*/
 void AirportLog::addAirport(const Airport& src) {
     Airport* airportArray = new Airport[m_count + 1];
     for (size_t i = 0; i < m_count; i++) {

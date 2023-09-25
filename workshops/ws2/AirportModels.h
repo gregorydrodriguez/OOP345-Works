@@ -37,9 +37,12 @@ class AirportLog {
    public:
     AirportLog(){};
     AirportLog(char* filename);
-    AirportLog(AirportLog& src);
-    AirportLog* operator=(AirportLog& src);
+    // rule of 5
+    AirportLog(const AirportLog& src);
+    AirportLog* operator=(const AirportLog& src);
     ~AirportLog();
+    AirportLog(AirportLog&& src);
+   // AirportLog& operator=(AirportLog&& src);
     void addAirport(const Airport& src);
     AirportLog findAirport(const char* state, const char* country);
     Airport operator[](size_t index) const;
