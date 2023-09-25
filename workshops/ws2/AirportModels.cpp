@@ -167,19 +167,19 @@ std::ostream& operator<<(std::ostream& os, const Airport& src) {
         os << std::setfill('.') << std::setw(20) << std::right << "Airport Name"
            << " : ";
         os << std::setfill('.') << std::setw(30) << std::left << src.m_name << std::endl;
-        os << std::setfill('.') << std::setw(20) << std::right << "Airport City"
+        os << std::setfill('.') << std::setw(20) << std::right << "City"
            << " : ";
         os << std::setfill('.') << std::setw(30) << std::left << src.m_city << std::endl;
-        os << std::setfill('.') << std::setw(20) << std::right << "Airport State"
+        os << std::setfill('.') << std::setw(20) << std::right << "State"
            << " : ";
         os << std::setfill('.') << std::setw(30) << std::left << src.m_state << std::endl;
-        os << std::setfill('.') << std::setw(20) << std::right << "Airport Country"
+        os << std::setfill('.') << std::setw(20) << std::right << "Country"
            << " : ";
         os << std::setfill('.') << std::setw(30) << std::left << src.m_country << std::endl;
-        os << std::setfill('.') << std::setw(20) << std::right << "Airport Latitude"
+        os << std::setfill('.') << std::setw(20) << std::right << "Latitude"
            << " : ";
         os << std::setfill('.') << std::setw(30) << std::left << src.m_latitude << std::endl;
-        os << std::setfill('.') << std::setw(20) << std::right << "Airport Longitude"
+        os << std::setfill('.') << std::setw(20) << std::right << "Longitude"
            << " : ";
         os << std::setfill('.') << std::setw(30) << std::left << src.m_longitude << std::endl;
     } else {
