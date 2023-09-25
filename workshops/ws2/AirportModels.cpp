@@ -64,17 +64,17 @@ AirportLog::AirportLog(char* filename) {
             }
             m_count++;
         }
-        m_airports = new Airport[m_count];
+        m_airports = new Airport[m_count]{};
         log.clear();
         log.seekg(0, std::ios::beg);
-        getline(log, line, '\n');
+        std::getline(log, line, '\n');
         int i = 0;
         while (log) {
-            getline(log, m_airports[i].m_code, ',');
-            getline(log, m_airports[i].m_name, ',');
-            getline(log, m_airports[i].m_city, ',');
-            getline(log, m_airports[i].m_state, ',');
-            getline(log, m_airports[i].m_country, ',');
+            std::getline(log, m_airports[i].m_code, ',');
+            std::getline(log, m_airports[i].m_name, ',');
+            std::getline(log, m_airports[i].m_city, ',');
+            std::getline(log, m_airports[i].m_state, ',');
+            std::getline(log, m_airports[i].m_country, ',');
             log >> m_airports[i].m_latitude;
             log.ignore(std::numeric_limits<std::streamsize>::max(), ',');
             log >> m_airports[i].m_longitude;
