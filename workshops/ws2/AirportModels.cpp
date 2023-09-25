@@ -69,7 +69,7 @@ AirportLog::AirportLog(char* filename) {
         log.seekg(0, std::ios::beg);
         std::getline(log, line, '\n');
         size_t i = 0;
-        while (log) {
+        for (size_t i = 0; i < m_count; i++) {
             std::getline(log, m_airports[i].m_code, ',');
             std::getline(log, m_airports[i].m_name, ',');
             std::getline(log, m_airports[i].m_city, ',');
@@ -79,7 +79,6 @@ AirportLog::AirportLog(char* filename) {
             log.ignore(std::numeric_limits<std::streamsize>::max(), ',');
             log >> m_airports[i].m_longitude;
             log.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-            i++;
         }
     }
 }
