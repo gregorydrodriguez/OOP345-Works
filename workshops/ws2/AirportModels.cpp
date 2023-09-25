@@ -7,6 +7,7 @@ Student #: 127880227
 #include "AirportModels.h"
 
 #include <fstream>
+#include <iomanip>
 #include <iostream>
 #include <string>
 #include <limits>
@@ -86,7 +87,7 @@ AirportLog::AirportLog(char* filename) {
 AirportLog::AirportLog(AirportLog& src) {
     m_count = src.m_count;
     m_airports = new Airport[m_count];
-    for (int i = 0; i < m_count; i++) {
+    for (size_t i = 0; i < m_count; i++) {
         m_airports[i] = src.m_airports[i];
     }
 }
@@ -95,7 +96,7 @@ AirportLog* AirportLog::operator=(AirportLog& src) {
     if (this != &src) {
         m_count = src.m_count;
         m_airports = new Airport[m_count];
-        for (int i = 0; i < m_count; i++) {
+        for (size_t i = 0; i < m_count; i++) {
             m_airports[i] = src.m_airports[i];
         }
     }
@@ -108,7 +109,7 @@ AirportLog::~AirportLog() {
 
 void AirportLog::addAirport(const Airport& src) {
     Airport* airportArray = new Airport[m_count + 1];
-    for (int i = 0; i < m_count; i++) {
+    for (size_t i = 0; i < m_count; i++) {
         airportArray[i] = m_airports[i];
     }
     airportArray[m_count] = src;
