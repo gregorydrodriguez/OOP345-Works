@@ -68,7 +68,6 @@ AirportLog::AirportLog(char* filename) {
         log.clear();
         log.seekg(0, std::ios::beg);
         std::getline(log, line, '\n');
-        size_t i = 0;
         for (size_t i = 0; i < m_count; i++) {
             std::getline(log, m_airports[i].m_code, ',');
             std::getline(log, m_airports[i].m_name, ',');
