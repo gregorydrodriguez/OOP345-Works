@@ -62,7 +62,7 @@ class Collection {
 
     std::ostream& print(std::ostream& os) const {
         os << "[";
-        for (auto i = 0; i < m_size; i++) {
+        for (unsigned int i = 0; i < m_size; i++) {
             os << std::fixed << std::setprecision(1) << m_items[i];
             if (i != m_size - 1) {
                 os << ",";
