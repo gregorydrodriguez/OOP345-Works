@@ -14,3 +14,4 @@ derive a templated class from another templated class
 
 🗎 In reflection, explain why it was necessary for you to add the members that you added into the Book class.
 🗎 In reflection, explain why these functions cannot be querries, even though they do not change value.
+🗎 In reflection, discuss if we can make this function a query or not (do an experiment and discuss your results).
