@@ -14,12 +14,13 @@ Student #: 127880227
 namespace sdds {
 template <typename T, unsigned int C>
 class Collection {
-    T m_items[C];
     unsigned int m_size{};
     static T m_smallestItem;
     static T m_largestItem;
 
    protected:
+    T m_items[C];
+    
     void setSmallestItem(const T& item) {
         if (m_smallestItem > item) {
             m_smallestItem = item;
@@ -29,6 +30,16 @@ class Collection {
     void setLargestItem(const T& item) {
         if (m_largestItem < item) {
             m_largestItem = item;
+        }
+    }
+
+    T operator[](const int index) {
+        return m_items[index];
+    }
+
+    void incrSize() {
+        if (m_size < C) {
+            m_size++;
         }
     }
 
@@ -81,5 +92,33 @@ template <>
 Book Collection<Book, 10>::m_smallestItem{"", 1, 10000};
 template <>
 Book Collection<Book, 10>::m_largestItem{"", 10000, 1};
+template <>
+Book Collection<Book, 72>::m_smallestItem{"", 1, 10000};
+template <>
+Book Collection<Book, 72>::m_largestItem{"", 10000, 1};
+
+template <>
+std::ostream& Collection<Book, 10>::print(std::ostream& os) const {
+    os << "| ---------------------------------------------------------------------------|" << std::endl;
+    for (unsigned int i = 0; i < m_size; i++) {
+        os << "| ";
+        m_items[i].print(os);
+        os << " |" << std::endl;
+    }
+    os << "| ---------------------------------------------------------------------------|" << std::endl;
+    return os;
+}
+
+template <>
+std::ostream& Collection<Book, 72>::print(std::ostream& os) const {
+    os << "| ---------------------------------------------------------------------------|" << std::endl;
+    for (unsigned int i = 0; i < m_size; i++) {
+        os << "| ";
+        m_items[i].print(os);
+        os << " |" << std::endl;
+    }
+    os << "| ---------------------------------------------------------------------------|" << std::endl;
+    return os;
+}
 }  // namespace sdds
 #endif  // SDDS_COLLECTION_H
