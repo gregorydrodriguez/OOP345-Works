@@ -5,13 +5,64 @@ E-mail: grodriguez13@myseneca.ca
 Student #: 127880227
 */
 
-design and code a class template
-template a class variable
-specialize a templated class variable for a particular type
-instantiate a template class
-specialize a member function of a templated class to process a particular type
-derive a templated class from another templated class
+1. Design and code a class template
+- Reference design in "Collection.h" (starting at line 15)
+
+2. Template a class variable
+- Reference in "Collection.h" (lines 18 and 19, initialized on lines 87 - 90)
+
+3. Specialize a templated class variable for a particular type
+-  Reference in "Collection.h" (lines 91 - 98)
+
+4. Instantiate a template class
+- Multiple references via "w3_p2.cpp" (line 57, 70,...)
+
+5. Specialize a member function of a templated class to process a particular type
+- Reference in "Collection.h" (line 100 - 110)
+
+6. Derive a templated class from another templated class
+- Reference in "OrderedCollection.h" (line 13 - 33) 
+
+🗎 In reflection explain: Why the definitions and implementations in this case should be included in header file?
+  Are there ways to work around and include implementation in .cpp files?
+Template definitions are used in the header file as some compilers may enforce that definitions are located at the point of use.
+You are able to implement templates in a .cpp file, but it requires more management. You would have to be very explicit with the
+datatypes being passed through.
+Another factor is that multiple source files will have their own individual instantiation of the template (EX. f1.cpp 
+and f2.cpp may create their own individual template for the same values which will result in longer compilation times). 
 
 🗎 In reflection, explain why it was necessary for you to add the members that you added into the Book class.
+The specs require that the setSmallestItem & setLargestItem methods to compare the current object with the object
+being passed through it's parameter. Essentially, if the new object is smaller or greater it must modify the object
+known as m_smallestItem or m_largest item, respectively. The < and > operators are used to compare primitive datatypes
+such as int, float, double, and char. Since it's an object we cannot compare these without an overload for both (one would
+work, but is lazy) AND we would need an overload for the assignment(=). Book.h and Collection.h cannot work cohesively
+without overloading the >, <, and = operators.
+
 🗎 In reflection, explain why these functions cannot be querries, even though they do not change value.
-🗎 In reflection, discuss if we can make this function a query or not (do an experiment and discuss your results).
+The specs explicitly state that setSmallestItem and setLargestItem methods are modifiers. Queries are meant to provide
+information about the object without modifying the current object. Since these are modifiers, if certain conditions
+are met the object is to be modified.
+
+🗎 In reflection, discuss if we can make this function a query or not. *operator[]():
+Yes, this can be a query. I had put const at the end of the signature and the output still worked. This overload operator
+is not modifying the object, but just returning the object at the set index. Any modifications afterwards has nothing to
+do with the overload.
+
+7.What is the reason for defining the class objects outside the class definition?
+Static Objects, i.e. m_smallestItem & m_largestItem, are defined outside of the class because they are independant to the
+object instantiating them. They have their own static duration and allows the compiler to allocate memory for them, so
+that all instances of a class share that object. If it is defined outside of a class this ensures that there is only
+one definition of the object.
+
+
+8. What is the reason for specializing the definition of m_smallestItem and m_largestItem objects for Book and 10.
+We created this specializations to have a specific initial value for the a Book object. Similar to an "if" statement,
+if a user creates a Book collection with a capacity of 10 we want to initialize our set of default values (title, pages,
+& chapters) for our m_smallestItem and m_largestItem for future comparisons. These will be replaced by book entries during
+the programs lifetime.
+
+9. m_smallestItem and m_largestItem objects are also initialized for Book and 72. Is this initilization necessary? Why?
+It seems redundant, but I believe this was to show that you cannot use a single specialization for 2 scenarios with the
+same output. It is not possible and you must create 2 specialization for the different parameters, even if the initialization
+values for m_smallestItem & m_largestItem are the same.
