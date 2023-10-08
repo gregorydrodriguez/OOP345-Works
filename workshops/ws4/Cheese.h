@@ -9,11 +9,10 @@ Student #: 127880227
 
 #include <iostream>
 #include <string>
-#define NaC "Not a Cheese"
 
 namespace sdds {
 class Cheese {
-    std::string m_name{NaC};
+    std::string m_name{"NaC"};
     unsigned int m_weight{};
     double m_price{};
     std::string m_features{};
