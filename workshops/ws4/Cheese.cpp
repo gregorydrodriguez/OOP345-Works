@@ -82,9 +82,9 @@ double Cheese::getPrice() const {
 std::ostream& operator<<(std::ostream& os, const Cheese& cheese) {
     os << "|" << std::left << std::setw(21) << cheese.getName();
     os << "|" << std::setw(5) << cheese.getWeight();
-    os << "|" << std::fixed << std::setprecision(2) << cheese.getPrice();
+    os << "|" << std::fixed << std::setw(5) << std::setprecision(2) << cheese.getPrice();
     os << "|" << std::right << std::setw(34) << cheese.getFeatures();
-    os << "|" << std::endl;
+    os << " |" << std::endl;
     return os;
 }
 }  // namespace sdds
