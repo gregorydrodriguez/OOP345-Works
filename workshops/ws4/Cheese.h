@@ -6,9 +6,10 @@ Student #: 127880227
 */
 #ifndef SDDS_CHEESE_H
 #define SDDS_CHEESE_H
-
 #include <iostream>
 #include <string>
+
+#include "Cheese.h"
 
 namespace sdds {
 class Cheese {
@@ -22,6 +23,8 @@ class Cheese {
    public:
     Cheese(){};
     Cheese(const std::string& str);
+    Cheese(Cheese& cheese);
+    Cheese& operator=(Cheese& Cheese);
     Cheese slice(size_t weight);
     std::string getName() const;
     std::string getFeatures() const;

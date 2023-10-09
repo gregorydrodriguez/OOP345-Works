@@ -6,11 +6,29 @@ Student #: 127880227
 */
 #include "Cheese.h"
 
-#include <iostream>
 #include <iomanip>
+#include <iostream>
 #include <string>
 
 namespace sdds {
+
+Cheese::Cheese(Cheese& cheese) {
+    m_name = cheese.m_name;
+    m_weight = cheese.m_weight;
+    m_price = cheese.m_price;
+    m_features = cheese.m_features;
+}
+
+Cheese& Cheese::operator=(Cheese& cheese) {
+    if (this == &cheese) {
+        m_name = cheese.m_name;
+        m_weight = cheese.m_weight;
+        m_price = cheese.m_price;
+        m_features = cheese.m_features;
+    }
+    return *this;
+}
+
 Cheese::Cheese(const std::string& str) {
     // Current position in str
     size_t start = 0;
