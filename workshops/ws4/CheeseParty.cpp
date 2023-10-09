@@ -26,6 +26,7 @@ CheeseParty& CheeseParty::operator=(const CheeseParty& cheeseParty) {
             }
         } else {
             m_pCheeses = nullptr;
+            m_numOfCheeses = 0;
         }
     }
     return *this;
