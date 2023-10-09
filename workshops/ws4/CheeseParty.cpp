@@ -8,9 +8,9 @@ Student #: 127880227
 
 namespace sdds {
 CheeseParty::~CheeseParty() {
-    for (int i = 0; i < m_numOfCheeses; i++) {
-        delete m_pCheeses[i];
-    }
+    // for (int i = 0; i < m_numOfCheeses; i++) {
+    //     delete m_pCheeses[i];
+    // }
     delete[] m_pCheeses;
 }
 
