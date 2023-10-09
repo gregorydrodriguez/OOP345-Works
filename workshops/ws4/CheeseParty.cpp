@@ -8,18 +8,11 @@ Student #: 127880227
 
 namespace sdds {
 CheeseParty::~CheeseParty() {
-    // for (int i = 0; i < m_numOfCheeses; i++) {
-    //     delete m_pCheeses[i];
-    // }
     delete[] m_pCheeses;
 }
 
 CheeseParty::CheeseParty(const CheeseParty& cheeseParty) {
-    m_numOfCheeses = cheeseParty.m_numOfCheeses;
-    m_pCheeses = new const Cheese*[m_numOfCheeses];
-    for (int i = 0; i < m_numOfCheeses; i++) {
-        m_pCheeses[i] = cheeseParty.m_pCheeses[i];
-    }
+    *this = cheeseParty;
 }
 
 CheeseParty& CheeseParty::operator=(const CheeseParty& cheeseParty) {
