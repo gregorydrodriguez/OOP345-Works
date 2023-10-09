@@ -4,3 +4,49 @@ Name: Gregory Rodriguez
 E-mail: grodriguez13@myseneca.ca
 Student #: 127880227
 */
+
+Workshop 4 Containers
+
+1. Design and code composition and aggregation class relationships
+Aggregation - I would consider the CheeseParty class as aggregation.
+            In the instructions, it says the class is responsible 
+            for the array of pointers but is not managing the life of
+            Cheese objects. At the end of main, there is code that loops
+            through the cheese array and deletes each cheese object.
+Composition - I would consider the CheeseShop class as composition. the
+            The CheeseShop class allocates a region of memory to copy
+            cheese and create new objects in the newly allocated region
+            of memory. There is no code in main to destroy these objects,
+            resulting in the CheeseShop to handle destruction of the
+            cheese objects it had created.
+
+2. Use member functions of the string class to parse a string into 
+   tokens based on simple rules
+In my helper function, getNextToken(), I implemented many suggested (or 
+relevant to suggested) string object members.
+
+a. npos; npos is a string member that represents "not a position". This
+helped with finding the end of the string.
+
+b. find(); was used to find a specific character and locate the position
+it was in (I implemented a 2 variables to hold positions to isolate my
+targeted tokens).
+
+c. substr(); substr was used to tokenize a string between 2 given
+positions via the parameters.
+
+d. erase(), find_first_not_of, and find_last_not_of; used to erase 
+whitespace. The first parameter is the position and i implemented
+find_first_not_of to return the position that isn't a white space
+to trim the tokens.
+
+3. Design and code a class that manages a dynamically allocated array 
+   of pointers to objects (double pointers)
+This is seen in the CheeseShop Class and CheeseParty class.
+
+Personal Learning Outcomes
+I find that my biggest issue is when I complete my program. I tend to
+always have memory leaks. I had reduced redundancies, but this lead me to
+debugging in the wrong place. Since I call my copy assignment in other
+functions, Valgrind was telling me there was an issue with my copy
+assignment, but it was turned out to be my move assignment. 
