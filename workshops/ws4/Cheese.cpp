@@ -71,7 +71,9 @@ std::string Cheese::getNextToken(const std::string& str, size_t& start) {
 Cheese Cheese::slice(size_t weight) {
     Cheese cheese;
     if (m_weight >= weight) {
-        cheese = *this;
+        cheese.m_name = this->m_name;
+        cheese.m_price = this->m_price;
+        cheese.m_features = this->m_features;
         cheese.m_weight = weight;
         m_weight -= weight;
         return cheese;
