@@ -238,3 +238,6 @@ int main(int argc, char **argv) {
   for (auto i = 0u; i < cnt; ++i)
     delete cheeses[i];
   delete[] cheeses;
+
+  return cout;
+}
