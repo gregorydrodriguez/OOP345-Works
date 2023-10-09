@@ -12,46 +12,28 @@ CheeseShop::CheeseShop(const CheeseShop& cheeseShop) {
     *this = cheeseShop;
 }
 
-// CheeseShop& CheeseShop::operator=(const CheeseShop& cheeseShop) {
-//     if (this != &cheeseShop) {
-//         deleteCheeses();
-//         m_shopName = cheeseShop.m_shopName;
-//         m_numOfCheeses = cheeseShop.m_numOfCheeses;
-//         if (cheeseShop.m_cheeses != nullptr) {
-//             m_cheeses = new const Cheese*[m_numOfCheeses];
-//             for (int i = 0; i < m_numOfCheeses; i++) {
-//                 m_cheeses[i] = new const Cheese(*cheeseShop.m_cheeses[i]);
-//             }
-//         } else {
-//             m_cheeses = nullptr;
-//         }
-//     }
-//     return *this;
-// }
-
 CheeseShop& CheeseShop::operator=(const CheeseShop& cheeseShop) {
     if (this != &cheeseShop) {
-        if(m_cheeses) {
-            for(int i = 0; i < m_numOfCheeses; i++){
-                delete m_cheeses[i];
-                m_cheeses[i] = nullptr;
+        deleteCheeses();
+        m_shopName = cheeseShop.m_shopName;
+        m_numOfCheeses = cheeseShop.m_numOfCheeses;
+        if (cheeseShop.m_cheeses != nullptr) {
+            m_cheeses = new const Cheese*[m_numOfCheeses];
+            for (int i = 0; i < m_numOfCheeses; i++) {
+                m_cheeses[i] = new const Cheese(*cheeseShop.m_cheeses[i]);
             }
-            delete[] m_cheeses;
+        } else {
             m_cheeses = nullptr;
         }
-        m_cheeses = new const Cheese*[cheeseShop.getNumOfCheeses()];
-        for (int i = 0; i < cheeseShop.getNumOfCheeses(); i++) {
-            m_cheeses[i] = new const Cheese(*cheeseShop.m_cheeses[i]);
-        }
-         m_shopName = cheeseShop.m_shopName;
-         m_numOfCheeses = cheeseShop.m_numOfCheeses;
-
     }
     return *this;
 }
 
 CheeseShop::~CheeseShop() {
-    deleteCheeses();
+    for (int i = 0; i < m_numOfCheeses; i++) {
+        delete m_cheeses[i];
+    }
+    delete[] m_cheeses;
 }
 
 void CheeseShop::deleteCheeses() {
@@ -84,13 +66,27 @@ void CheeseShop::setDefault() {
     m_numOfCheeses = 0;
 }
 
+// CheeseShop& CheeseShop::addCheese(const Cheese& cheese) {
+//     const Cheese* copy = new const Cheese(cheese);
+//     const Cheese** newCheeses = new const Cheese*[m_numOfCheeses + 1];
+//     for (int i = 0; i < m_numOfCheeses; i++) {
+//         newCheeses[i] = m_cheeses[i];
+//     }
+//     delete[] m_cheeses;
+//     m_cheeses = newCheeses;
+//     m_cheeses[m_numOfCheeses] = copy;
+//     m_numOfCheeses++;
+//     return *this;
+// }
+
 CheeseShop& CheeseShop::addCheese(const Cheese& cheese) {
     const Cheese* copy = new const Cheese(cheese);
     const Cheese** newCheeses = new const Cheese*[m_numOfCheeses + 1];
     for (int i = 0; i < m_numOfCheeses; i++) {
-        newCheeses[i] = m_cheeses[i];
+        newCheeses[i] = new const Cheese(*m_cheeses[i]);
     }
-    delete[] m_cheeses;
+    // delete[] m_cheeses;
+    deleteCheeses();
     m_cheeses = newCheeses;
     m_cheeses[m_numOfCheeses] = copy;
     m_numOfCheeses++;
