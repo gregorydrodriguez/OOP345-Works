@@ -9,19 +9,17 @@ Student #: 127880227
 namespace sdds {
 
 CheeseShop::CheeseShop(const CheeseShop& cheeseShop) {
-    std::cout << "copy constr" << std::endl;
     *this = cheeseShop;
 }
 
 CheeseShop& CheeseShop::operator=(const CheeseShop& cheeseShop) {
-    std::cout << "copy assign" << std::endl;
     if (this != &cheeseShop) {
         deleteCheeses();
         m_shopName = cheeseShop.m_shopName;
         m_numOfCheeses = cheeseShop.m_numOfCheeses;
         if (cheeseShop.m_cheeses != nullptr) {
             m_cheeses = new const Cheese*[m_numOfCheeses];
-            for (int i = 0; i < m_numOfCheeses + 1; i++) {
+            for (int i = 0; i < m_numOfCheeses; i++) {
                 m_cheeses[i] = new const Cheese(*cheeseShop.m_cheeses[i]);
             }
         } else {
@@ -44,13 +42,19 @@ void CheeseShop::deleteCheeses() {
 }
 
 CheeseShop::CheeseShop(CheeseShop&& cheeseShop) {
-    *this = cheeseShop;
+    deleteCheeses();
+    m_cheeses = cheeseShop.m_cheeses;
+    m_numOfCheeses = cheeseShop.m_numOfCheeses;
+    m_shopName = cheeseShop.m_shopName;
     cheeseShop.setDefault();
 }
 
 CheeseShop& CheeseShop::operator=(CheeseShop&& cheeseShop) {
     if (this != &cheeseShop) {
-        *this = cheeseShop;
+        deleteCheeses();
+        m_cheeses = cheeseShop.m_cheeses;
+        m_numOfCheeses = cheeseShop.m_numOfCheeses;
+        m_shopName = cheeseShop.m_shopName;
         cheeseShop.setDefault();
     }
     return *this;

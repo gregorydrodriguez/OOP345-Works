@@ -33,13 +33,17 @@ CheeseParty& CheeseParty::operator=(const CheeseParty& cheeseParty) {
 }
 
 CheeseParty::CheeseParty(CheeseParty&& cheeseParty) {
-    *this = cheeseParty;
+    delete[] m_pCheeses;
+    m_pCheeses = cheeseParty.m_pCheeses;
+    m_numOfCheeses = cheeseParty.m_numOfCheeses;
     cheeseParty.setDefault();
 }
 
 CheeseParty& CheeseParty::operator=(CheeseParty&& cheeseParty) {
     if (this != &cheeseParty) {
-        *this = cheeseParty;
+        delete[] m_pCheeses;
+        m_pCheeses = cheeseParty.m_pCheeses;
+        m_numOfCheeses = cheeseParty.m_numOfCheeses;
         cheeseParty.setDefault();
     }
     return *this;
