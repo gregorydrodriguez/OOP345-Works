@@ -20,8 +20,8 @@ CheeseParty::CheeseParty(const CheeseParty& cheeseParty) {
 
 CheeseParty& CheeseParty::operator=(const CheeseParty& cheeseShop) {
     if (this != &cheeseShop) {
+        delete[] m_pCheeses;
         if (cheeseShop.m_pCheeses != nullptr) {
-            delete[] m_pCheeses;
             m_numOfCheeses = cheeseShop.m_numOfCheeses;
             m_pCheeses = new const Cheese*[m_numOfCheeses];
             for (int i = 0; i < m_numOfCheeses; i++) {
