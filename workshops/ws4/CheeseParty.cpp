@@ -15,17 +15,23 @@ CheeseParty::~CheeseParty() {
 }
 
 CheeseParty::CheeseParty(const CheeseParty& cheeseParty) {
-    *this = cheeseParty;
+    if (cheeseParty.m_pCheeses != nullptr) {
+        m_numOfCheeses = cheeseParty.m_numOfCheeses;
+        m_pCheeses = new const Cheese*[m_numOfCheeses];
+        for (int i = 0; i < m_numOfCheeses; i++) {
+            m_pCheeses[i] = cheeseParty.m_pCheeses[i];
+        }
+    }
 }
 
-CheeseParty& CheeseParty::operator=(const CheeseParty& cheeseShop) {
-    if (this != &cheeseShop) {
+CheeseParty& CheeseParty::operator=(const CheeseParty& cheeseParty) {
+    if (this != &cheeseParty) {
         delete[] m_pCheeses;
-        if (cheeseShop.m_pCheeses != nullptr) {
-            m_numOfCheeses = cheeseShop.m_numOfCheeses;
+        if (cheeseParty.m_pCheeses != nullptr) {
+            m_numOfCheeses = cheeseParty.m_numOfCheeses;
             m_pCheeses = new const Cheese*[m_numOfCheeses];
             for (int i = 0; i < m_numOfCheeses; i++) {
-                m_pCheeses[i] = cheeseShop.m_pCheeses[i];
+                m_pCheeses[i] = cheeseParty.m_pCheeses[i];
             }
         } else {
             m_pCheeses = nullptr;
