@@ -17,7 +17,7 @@ CheeseShop& CheeseShop::operator=(const CheeseShop& cheeseShop) {
         if (cheeseShop.m_cheeses != nullptr) {
             m_shopName = cheeseShop.m_shopName;
             m_numOfCheeses = cheeseShop.m_numOfCheeses;
-            delete[] m_cheeses;
+            deleteCheeses();
             m_cheeses = new const Cheese*[m_numOfCheeses];
             for (int i = 0; i < m_numOfCheeses; i++) {
                 m_cheeses[i] = cheeseShop.m_cheeses[i];
@@ -30,6 +30,10 @@ CheeseShop& CheeseShop::operator=(const CheeseShop& cheeseShop) {
 }
 
 CheeseShop::~CheeseShop() {
+    deleteCheeses();
+}
+
+void CheeseShop::deleteCheeses() {
     for (int i = 0; i < m_numOfCheeses; i++) {
         delete m_cheeses[i];
     }

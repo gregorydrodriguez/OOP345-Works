@@ -15,8 +15,9 @@ class CheeseShop {
     const Cheese** m_cheeses{};
     std::string m_shopName{"No Name"};
     int m_numOfCheeses{};
-    
+
     void setDefault();
+    void deleteCheeses();
 
    public:
     CheeseShop(const CheeseShop& cheeseShop);
