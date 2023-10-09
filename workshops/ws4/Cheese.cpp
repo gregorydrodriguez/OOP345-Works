@@ -12,7 +12,7 @@ Student #: 127880227
 
 namespace sdds {
 
-Cheese::Cheese(Cheese& cheese) {
+Cheese::Cheese(const Cheese& cheese) {
     m_name = cheese.m_name;
     m_weight = cheese.m_weight;
     m_price = cheese.m_price;
@@ -71,10 +71,8 @@ std::string Cheese::getNextToken(const std::string& str, size_t& start) {
 Cheese Cheese::slice(size_t weight) {
     Cheese cheese;
     if (m_weight >= weight) {
-        cheese.m_name = this->m_name;
+        cheese = *this;
         cheese.m_weight = weight;
-        cheese.m_price = this->m_price;
-        cheese.m_features = this->m_features;
         m_weight -= weight;
         return cheese;
     }

@@ -30,6 +30,9 @@ CheeseShop& CheeseShop::operator=(const CheeseShop& cheeseShop) {
 }
 
 CheeseShop::~CheeseShop() {
+    for (int i = 0; i < m_numOfCheeses; i++) {
+        delete m_cheeses[i];
+    }
     delete[] m_cheeses;
 }
 
@@ -57,13 +60,14 @@ void CheeseShop::setDefault() {
 }
 
 CheeseShop& CheeseShop::addCheese(const Cheese& cheese) {
+    const Cheese* copy = new const Cheese(cheese);
     const Cheese** newCheeses = new const Cheese*[m_numOfCheeses + 1];
     for (int i = 0; i < m_numOfCheeses; i++) {
         newCheeses[i] = m_cheeses[i];
     }
     delete[] m_cheeses;
     m_cheeses = newCheeses;
-    m_cheeses[m_numOfCheeses] = &cheese;
+    m_cheeses[m_numOfCheeses] = copy;
     m_numOfCheeses++;
     return *this;
 }

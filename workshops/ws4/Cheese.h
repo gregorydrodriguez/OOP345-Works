@@ -23,7 +23,7 @@ class Cheese {
    public:
     Cheese(){};
     Cheese(const std::string& str);
-    Cheese(Cheese& cheese);
+    Cheese(const Cheese& cheese);
     Cheese& operator=(Cheese& Cheese);
     Cheese slice(size_t weight);
     std::string getName() const;
