@@ -8,6 +8,7 @@ Student #: 127880227
 
 #include <iomanip>
 #include <iostream>
+#include <string>
 
 namespace sdds {
 // Book::~Book();
