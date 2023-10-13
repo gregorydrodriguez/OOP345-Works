@@ -8,9 +8,9 @@ Student #: 127880227
 #define SDDS_BOOK_H
 
 #include <iostream>
+#include <string>
 
 namespace sdds {
-
 class Book {
     std::string m_author{};
     std::string m_title{};
