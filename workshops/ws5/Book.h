@@ -15,7 +15,7 @@ class Book {
     std::string m_author{};
     std::string m_title{};
     std::string m_country{};
-    std::string m_description;
+    std::string m_description{};
     size_t m_year{};
     double m_price{};
 
