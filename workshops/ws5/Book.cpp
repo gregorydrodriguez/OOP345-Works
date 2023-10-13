@@ -34,10 +34,10 @@ Book::Book(const std::string& strBook) {
 }
 
 std::string Book::getNextToken(const std::string& str, size_t& start, char delimiter) {
-    if (start == std::string::npos) {
-        std::cout << "THIS SHOULD NOT PRINT" << std::endl;
-        return "ERROR";
-    }
+    // if (start == std::string::npos) {
+    //     std::cout << "THIS SHOULD NOT PRINT" << std::endl;
+    //     return "ERROR";
+    // }
     const size_t end = str.find(delimiter, start);
     // Get token and update str postition reference
     std::string token;
