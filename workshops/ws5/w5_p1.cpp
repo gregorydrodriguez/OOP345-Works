@@ -46,8 +46,7 @@ int main(int argc, char** argv) {
             return 1;
         }
         size_t i = 0;
-        while (file) {
-            std::getline(file, line);
+        while (std::getline(file, line)) {
             if (line[0] != '#') {
                 library[i] = sdds::Book(line);
                 i++;
