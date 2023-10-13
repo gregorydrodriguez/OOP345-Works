@@ -61,6 +61,7 @@ int main(int argc, char** argv) {
 
     double usdToCadRate = 1.3;
     double gbpToCadRate = 1.5;
+
     // TODO: create a lambda expression that fixes the price of a book accoding to the rules
     //       - the expression should receive a single parameter of type "Book&"
     //       - if the book was published in US, multiply the price with "usdToCadRate"
@@ -78,24 +79,25 @@ int main(int argc, char** argv) {
     std::cout << "The library content\n";
     std::cout << "-----------------------------------------\n";
     // TODO: iterate over the library and print each book to the screen
-    int cnt = sizeof(library) / sizeof(library[0]);
-    for (int i = 0; i < cnt; i++) {
+    //int cnt = sizeof(library) / sizeof(library[0]);
+    for (int i = 0; i < 7; i++) {
         std::cout << library[i];
     }
     std::cout << "-----------------------------------------\n\n";
 
     // TODO: iterate over the library and update the price of each book
     //         using the lambda defined above.
-    for (int i = 0; i < cnt; i++) {
+    for (int i = 0; i < 7; i++) {
         convertPrice(library[i]);
     }
     std::cout << "-----------------------------------------\n";
     std::cout << "The library content (updated prices)\n";
     std::cout << "-----------------------------------------\n";
     // TODO: iterate over the library and print each book to the screen
-    for (int i = 0; i < cnt; i++) {
+    for (int i = 0; i < 7; i++) {
         std::cout << library[i];
     }
     std::cout << "-----------------------------------------\n";
+	
     return cout;
 }
