@@ -128,7 +128,7 @@ int main(int argc, char** argv) {
 
     // TODO (from part #1): iterate over the library and update the price of each book
     //         using the lambda defined above.
-    for (int i = 0; i < library.size(); i++) {
+    for (size_t i = 0; i < library.size(); i++) {
         convertPrice(library[i]);
     }
 
