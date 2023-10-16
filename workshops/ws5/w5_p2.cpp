@@ -78,7 +78,7 @@ int main(int argc, char** argv) {
         }
         std::string line;
         size_t i = 0;
-        while (i < 3 && std::getline(file, line)) {
+        while (i <= 3 && std::getline(file, line)) {
             if (line[0] != '#') {
                 library += sdds::Book(line);
                 i++;
