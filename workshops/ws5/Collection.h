@@ -66,7 +66,7 @@ class Collection {
 
     T& operator[](size_t idx) const {
         if (idx >= m_size) {
-            throw std::out_of_range("Bad Index [" + std::to_string(idx) + "]. Collection has [" + std::to_string(m_size) + "] items.");
+            throw std::out_of_range("Bad index [" + std::to_string(idx) + "]. Collection has [" + std::to_string(m_size) + "] items.");
         }
         return m_items[idx];
     }
