@@ -4,38 +4,30 @@ Name: Gregory Rodriguez
 E-mail: grodriguez13@myseneca.ca
 Student #: 127880227
 */
-#ifndef SDDS_BOOK_H
-#define SDDS_BOOK_H
-
+#ifndef SDDS_MOVIE_H
+#define SDDS_MOVIE_H
 #include <iostream>
-#include <string>
 
 namespace sdds {
 
-class Book {
-    std::string m_author{};
+class Movie {
     std::string m_title{};
-    std::string m_country{};
     std::string m_description{};
     size_t m_year{};
-    double m_price{};
 
    public:
-    Book(){};
-    Book(const std::string& strBook);
+    Movie(){};
+    Movie(const std::string& strMovie);
     const std::string& title() const;
-    const std::string& country() const;
-    const size_t& year() const;
-    double& price();
-    void setPrice(double price);
     std::string getNextToken(const std::string& str, size_t& start, char delimiter);
-    friend std::ostream& operator<<(std::ostream& os, const Book& book);
+    friend std::ostream& operator<<(std::ostream& os, const Movie& movie);
     template <typename T>
     void fixSpelling(T& spellChecker) {
+        spellChecker(m_title);
         spellChecker(m_description);
     }
 };
 
-std::ostream& operator<<(std::ostream& os, const Book& book);
+std::ostream& operator<<(std::ostream& os, const Movie& movie);
 }  // namespace sdds
-#endif  // SDDS_BOOK_H
+#endif  // SDDS_MOVIE_H

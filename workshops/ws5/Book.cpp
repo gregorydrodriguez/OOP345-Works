@@ -11,12 +11,6 @@ Student #: 127880227
 #include <string>
 
 namespace sdds {
-// Book::~Book();
-// Book::Book(const Book& book);
-// Book& Book::operator=(const Book& book);
-// Book::Book(Book&& book);
-// Book& Book::operator=(Book&& book);
-
 Book::Book(const std::string& strBook) {
     // Current position in str
     size_t start = 0;
