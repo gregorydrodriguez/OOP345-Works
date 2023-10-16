@@ -26,7 +26,6 @@ SpellChecker::SpellChecker(const char* filename) {
 }
 
 void SpellChecker::operator()(std::string& text) {
-    std::cout << "Spellchecker Statistics" << std::endl;
     for (size_t i = 0; i < MAX_WORDS; i++) {
         size_t pos = text.find(m_badWords[i]);
         while (pos != std::string::npos) {
@@ -39,6 +38,7 @@ void SpellChecker::operator()(std::string& text) {
 }
 
 void SpellChecker::showStatistics(std::ostream& out) const {
+    std::cout << "Spellchecker Statistics" << std::endl;
     for (size_t i = 0; i < MAX_WORDS; i++) {
         out << std::setw(15) << std::right << m_badWords[i] << " " << m_replacementCounts[i] << " " << m_goodWords[i] << std::endl;
     }
