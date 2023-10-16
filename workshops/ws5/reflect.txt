@@ -1,0 +1,53 @@
+/*
+I have done all the coding by myself and only copied the code that my professor provided to complete my workshops and assignments.
+Name: Gregory Rodriguez
+E-mail: grodriguez13@myseneca.ca
+Student #: 127880227
+*/
+
+Workshop 5
+
+Lambda Expressions
+
+    auto convertPrice = [usdToCadRate, gbpToCadRate](sdds::Book& book) {
+        if (book.country() == "US") {
+            book.setPrice(book.price() * usdToCadRate);
+        } else if (book.country() == "UK" && book.year() >= 1990 && book.year() <= 1999) {
+            book.setPrice(book.price() * gbpToCadRate);
+        }
+    };
+
+Similar to arrow functions in JS. We implemented a lambda Expressions
+for the program, as we only convert the prices one time. Creating A
+seperate function would be unnecessary. The result that we want is
+very simple and is only needed for the Book module. (Also we were forced 
+to write this lambda expression in main).
+
+Functor
+We implement a class called SpellChecker. A functor acts as a function, 
+but is obviously not a function. On line 211 w5_p2.cpp we create an
+instance of SpellChecker and pass one of the filenames as an argument
+which SpellChecker's constructor was made to work cohesively with files 
+in the directory.
+
+try, catch, throw
+I had to implemented try, catch, and throw statements.
+
+try - we use the try block to enclose a few blocks of code in our main
+(line 210 via the functor, 191 for our loop of cout'ing theCollection 
+array that will go out of bounds). It is similar to the 'if' in an if 
+statement.
+
+catch - where try would be our if statement, catch would be our else.
+If there is an error in our try we can handle these exception with our
+catch statement. Since we know that (in line 192) we wouldn't be able to
+access an array beyond the 7th index, we use a derived class from the 
+"std::exception" class called std::out_of_range. We use the "what()"
+method that provides information of the exception.
+
+throw - throw is to manually throw an exception. I.E. line 16 of
+SpellChecker.cpp, we throw an invalid argument if the file did not
+open properly.
+
+
+
