@@ -78,7 +78,7 @@ int main(int argc, char** argv) {
         }
         std::string line;
         size_t i = 0;
-        while (std::getline(file, line) && i < 3) {
+        while (i < 3 && std::getline(file, line)) {
             if (line[0] != '#') {
                 library += sdds::Book(line);
                 i++;
@@ -188,7 +188,7 @@ int main(int argc, char** argv) {
     //       If an exception occurs print a message in the following format
     //** EXCEPTION: ERROR_MESSAGE<endl>
     //         where ERROR_MESSAGE is extracted from the exception object.
-    try { 
+    try {
         for (auto i = 0u; i < 10; ++i) {
             std::cout << theCollection[i];
         }
