@@ -78,7 +78,7 @@ int main(int argc, char** argv) {
         }
         std::string line;
         size_t i = 0;
-        while (std::getline(file, line) && i <= 3) {
+        while (std::getline(file, line) && i < 3) {
             if (line[0] != '#') {
                 library += sdds::Book(line);
                 i++;
@@ -95,7 +95,6 @@ int main(int argc, char** argv) {
         // TODO: add the rest of the books from the file.
         while (std::getline(file, line)) {
             library += sdds::Book(line);
-            i++;
         }
         file.close();
     } else {
