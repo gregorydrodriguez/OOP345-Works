@@ -6,6 +6,8 @@ Student #: 127880227
 */
 #include "Directory.h"
 
+#include <vector>
+
 namespace sdds {
 Directory::~Directory() {
     for (auto& resource : m_contents) {
