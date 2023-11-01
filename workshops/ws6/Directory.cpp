@@ -25,7 +25,7 @@ Directory::Directory(const std::string& name) {
 void Directory::update_parent_path(const std::string& path) {
     m_parent_path = path;
     for (auto& resource : m_contents) {
-        resource->update_parent_path(m_parent_path);
+        resource->update_parent_path(this->path());
     }
 }
 
