@@ -6,6 +6,7 @@ Student #: 127880227
 */
 #include "Directory.h"
 
+#include <string>
 #include <vector>
 
 namespace sdds {
@@ -63,7 +64,16 @@ Directory& Directory::operator+=(Resource* resource) {
 }
 
 Resource* Directory::find(const std::string& name, const std::vector<OpFlags>& flags) {
-    if (std::find(flags.begin(), flags.end(), OpFlags::RECURSIVE) != flags.end()) {
+    // bool foundFlag = false;
+    // for (auto flag : flags) {
+    //     if (flag == OpFlags::RECURSIVE) {
+    //         foundFlag = true;
+    //     }
+    // }
+    auto foundFlag = std::find_if(flags.begin(), flags.end(), [](OpFlags flag) {
+        return flag == OpFlags::RECURSIVE;
+    });
+    if (foundFlag != flags.end()) {  // Just "if (foundFlag)" if using first implementation
         for (auto& resource : m_contents) {
             if (resource->type() == NodeType::DIR) {
                 auto foundResource = dynamic_cast<Directory*>(resource)->find(name, flags);
