@@ -6,6 +6,7 @@ Student #: 127880227
 */
 #include "Directory.h"
 
+#include <algorithm>
 #include <string>
 #include <vector>
 
