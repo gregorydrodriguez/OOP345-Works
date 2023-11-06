@@ -116,17 +116,17 @@ void Directory::display(std::ostream& os, const std::vector<FormatFlags>& flags)
         } else {
             os << "F";
         }
-        os << " | " << std::left << std::setw(15) << resource->name() << " | ";
+        os << " | " << std::left << std::setw(15) << resource->name() << " |";
         auto isRecursive = std::find_if(flags.begin(), flags.end(), [](FormatFlags flag) {
             return flag == FormatFlags::LONG;
         });
         if (isRecursive != flags.end()) {
             if (resource->type() == NodeType::DIR) {
-                os << std::right << std::setw(2) << resource->count() << " | ";
+                os << std::right << " " << std::setw(2) << resource->count() << " | ";
                 os << std::right << std::setw(10) << std::to_string(resource->size()) + " bytes"
                    << " |";
             } else {
-                os << std::right << std::setw(2) << "  "
+                os << std::right <<  " " << std::setw(2) << "  "
                    << " | ";
                 os << std::right << std::setw(10) << std::to_string(resource->size()) + " bytes"
                    << " |";
