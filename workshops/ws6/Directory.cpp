@@ -124,12 +124,12 @@ void Directory::display(std::ostream& os, const std::vector<FormatFlags>& flags)
             if (resource->type() == NodeType::DIR) {
                 os << std::right << " " << std::setw(2) << resource->count() << " | ";
                 os << std::right << std::setw(10) << std::to_string(resource->size()) + " bytes"
-                   << " |";
+                   << " | ";
             } else {
                 os << std::right <<  " " << std::setw(2) << "  "
                    << " | ";
                 os << std::right << std::setw(10) << std::to_string(resource->size()) + " bytes"
-                   << " |";
+                   << " | ";
             }
         }
         os << std::endl;
