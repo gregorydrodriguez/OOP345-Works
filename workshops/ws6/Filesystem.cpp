@@ -33,12 +33,12 @@ Filesystem& Filesystem::operator=(Filesystem&& src) {
 }
 
 Filesystem::Filesystem(const std::string filename, const std::string root) {
-    m_root = new Directory(root);
-    m_current = m_root;
     std::ifstream file(filename);
     if (file.fail()) {
         throw std::invalid_argument("File failed to open.");
     }
+    m_root = new Directory(root);
+    m_current = m_root;
     std::string line;
     while (std::getline(file, line)) {
         Directory* currentDir = m_root;
