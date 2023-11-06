@@ -7,3 +7,41 @@ Student #: 127880227
 
 Workshop 6 STL Containers
 
+1. Manage polymorphic objects using the vector container of the STL
+An example of polymorphic objects within a vector is our Resource Vectors used within the
+program. This was useful as our vectors would contain a resource via a directory or file.
+
+2. Move a dynamically allocated object into a container
+We create a vector container inside of Directory of type Resource*. This allows us to store
+Directories and Files within a Directory to replicate/imitate directories.
+
+3. Code a range-based iteration on the objects in a container
+I used a range-based interation on vectors, as this does not work on dynamically allocated
+arrays (but works on statically allocated arrays and vectors).
+
+4. Report and handle an exception.
+I had a lot of issues with the initial throw statement in main (part 2). The program would
+end if I didn't input a throw in my constructor. After researching online, it said
+this was bad practice, but that was the only way to progress in the lab. If you throw an
+exception in the constructor it will not call the destructor, so any cleanup that needs to
+done must be handled in the constructor. My issue is that I allocated memory for m_root
+and it would not call the destructor in the end, so I put the throw before the allocation.
+
+5. Why do you need to deallocate the dynamically allocated memory in your vector of 
+resources?
+The vector indices are primarily dynamically allocated objects (Directory* and File*).
+The vector does not automatically deallocate this memory when the vector is destroyed.
+To prevent memory leaks we must provide clean up ourselves.
+
+6. To call specific functions for a Directory objects stored in a Resource*, what special 
+C++ operation did you have to do and why?
+I had to perform downcasting. After reading documentation, I learned that it is preferred
+to use static_cast and that dynamic_cast is rarely used. I casted objects as a Directory
+to gain access to the Directory methods.
+
+7. In this workshop you had to use std::vector<sdds::Resource*> to store a collection of 
+filesystem resources as pointers. Could you have used std::vector<sdds::Resource> instead?
+Justify your answer!
+I believe that if you use std::vector<sdds::Resource*>, it allows management of any derived
+classes, such as files and directories. Without the std::vector<sdds::Resource> would only
+refer to Resource class.
