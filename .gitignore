@@ -34,3 +34,15 @@ workshops/ws4/ws
 workshops/ws4/test
 workshops/practice/practice.dSYM/Contents/Resources/DWARF/practice
 workshops/practice/practice.dSYM/Contents/Info.plist
+workshops/ms1/Utilities.cpp
+workshops/ms1/test.dSYM/Contents/Resources/DWARF/test
+.gitignore
+workshops/ms1/test.dSYM/Contents/Info.plist
+.gitignore
+workshops/ms1/test
+test.dSYM/Contents/Resources/DWARF/test
+.gitignore
+.gitignore
+test.dSYM/Contents/Info.plist
+.vscode/launch.json
+.vscode/tasks.json
