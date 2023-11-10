@@ -56,9 +56,10 @@ void Station::display(std::ostream& os, bool full) const {
         os << std::right << std::setw(6) << std::setfill('0') << m_serialNum << " | " << std::endl;
     } else {
         os << std::setw(0);
-        os << std::right << std::setw(3) << m_stationID << " | ";
+        os << std::right << std::setw(3) << std::setfill('0') << m_stationID << " | ";
         os << std::setw(m_widthField) << std::left << std::setfill(' ') << m_itemName << " | ";
         os << std::right << std::setw(6) << std::setfill('0') << m_serialNum << " | ";
+        os << std::right << std::setw(4) << std::setfill(' ') << m_numOfItems << " | ";
         os << m_description << std::endl;
     }
 }
