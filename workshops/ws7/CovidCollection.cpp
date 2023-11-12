@@ -10,6 +10,7 @@ Student #: 127880227
 #include <fstream>
 #include <vector>
 #include <algorithm>
+#include <iomanip>
 
 namespace sdds {
     CovidCollection::CovidCollection(const std::string& textfile) {
