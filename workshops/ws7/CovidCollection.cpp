@@ -39,7 +39,7 @@ namespace sdds {
     }
 
     std::ostream& operator<<(std::ostream& out, const Covid& theCovid) {
-        out << "| " << std::setw(21) << theCovid.m_country;
+        out << "| " << std::left << std::setw(21) << theCovid.m_country;
         out << " | " << std::setw(15) << theCovid.m_city;
         out << " | " << std::setw(20) << theCovid.m_variant;
         if (theCovid.m_year >= 0) {
