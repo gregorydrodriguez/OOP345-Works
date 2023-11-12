@@ -42,6 +42,7 @@ namespace sdds {
         out << "| " << std::left << std::setw(21) << theCovid.m_country;
         out << " | " << std::setw(15) << theCovid.m_city;
         out << " | " << std::setw(20) << theCovid.m_variant;
+        out << std::right;
         if (theCovid.m_year >= 0) {
             out << " | " << std::setw(6) << theCovid.m_year;
         } else {
