@@ -46,3 +46,7 @@ test.dSYM/Contents/Resources/DWARF/test
 test.dSYM/Contents/Info.plist
 .vscode/launch.json
 .vscode/tasks.json
+workshops/ws7/test
+workshops/ws7/test.dSYM/Contents/Info.plist
+.gitignore
+workshops/ws7/test.dSYM/Contents/Resources/DWARF/test
