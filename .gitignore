@@ -50,3 +50,9 @@ workshops/ws7/test
 workshops/ws7/test.dSYM/Contents/Info.plist
 .gitignore
 workshops/ws7/test.dSYM/Contents/Resources/DWARF/test
+workshops/ws7/reflect.txt
+workshops/ws7/test2
+.gitignore
+workshops/ws7/test2.dSYM/Contents/Info.plist
+.gitignore
+workshops/ws7/test2.dSYM/Contents/Resources/DWARF/test2
