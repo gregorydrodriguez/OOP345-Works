@@ -5,3 +5,37 @@ E-mail: grodriguez13@myseneca.ca
 Student #: 127880227
 */
 
+Workshop 7: STL Algorithms
+
+1. copy data from a file into a sequential container
+An example would be my custom constructor for a CovidCollection.
+
+2. use the numeric library to accumulate data values
+In the display function there is an implementation of accumulate to retrieve the total number of cases and 
+deaths. local variable for countryCases and countryDeaths also use this implementation, but with a ternary
+operator to evaluate if the country parameter is "ALL" or specific to a country.
+
+3. use a lambda expression to specify an operation on each value in a data set
+I'm going to assume the data set is everything in the parenthesis. One example is line 54 of
+CovidCollection.cpp I use a covid object within the data set. I use for_each to iterate through
+the collection of covid objects to display information about the covid object via our << (insertion?)
+overload.
+
+4. use the algorithm library to sort data values
+line 72 (CovidCollection.cpp)there is an implementation of a sort function. Within it I create a variable and assign a
+bool to it with. Since the values of country could be the same for different covid objects, I use the
+std::tie function to select two attributes and create a tuple. Essentially, for example, if country is
+same the user can evaluate the deaths to see which is greater/lesser. I implemented the algorithm sort
+that sorts a range of elements in a collection.
+
+List all the STL Functions used in the workshop and explain.
+
+- accumulate() was used to add all the cases and deaths either globally or specified country
+- for_each() to perform an operator on every element in the CovidCollection
+- sort() to compare and sort covid objects within the collection when comparing deaths
+- any_of() iterates through a collection if there is any element in the collection that
+meets the condition within the lambda function
+- copy_if() to copy the elements in our covid collection into a list where the conidtion within the
+lambda is met 
+- transform() iterates through the covid collection and alters severity where
+deaths(attribute) meets a certain condition

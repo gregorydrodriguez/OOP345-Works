@@ -13,6 +13,7 @@ Student #: 127880227
 #include <list>
 #include <string>
 #include <vector>
+#include <numeric>
 
 namespace sdds {
 CovidCollection::CovidCollection(const std::string& textfile) {
@@ -35,20 +36,22 @@ CovidCollection::CovidCollection(const std::string& textfile) {
 }
 // P2
 void CovidCollection::display(std::ostream& out, const std::string& country) const {
-    size_t totalCases = 0;
-    size_t totalDeaths = 0;
-    size_t countryCases = 0;
-    size_t countryDeaths = 0;
+    size_t totalCases = std::accumulate(m_covidCollection.begin(), m_covidCollection.end(), 0, [](int total, const Covid& covid) {
+        return total + covid.m_cases;
+    });
+    size_t totalDeaths = std::accumulate(m_covidCollection.begin(), m_covidCollection.end(), 0, [](int total, const Covid& covid) {
+        return total + covid.m_deaths;
+    });
+    size_t countryCases = std::accumulate(m_covidCollection.begin(), m_covidCollection.end(), 0, [country](int total, const Covid& covid) {
+        return total + (covid.m_country == country ? covid.m_cases : 0);
+    });
+    size_t countryDeaths = std::accumulate(m_covidCollection.begin(), m_covidCollection.end(), 0, [country](int total, const Covid& covid) {
+        return total + (covid.m_country == country ? covid.m_deaths : 0);
+    });
     if (country != "ALL") {
         out << "Displaying information of country = " + country << std::endl;
     }
-    std::for_each(m_covidCollection.begin(), m_covidCollection.end(), [&countryCases, &countryDeaths, &totalCases, &totalDeaths, &out, country](const Covid& covid) {
-        totalCases += covid.m_cases;
-        totalDeaths += covid.m_deaths;
-        if (covid.m_country == country) {
-            countryCases += covid.m_cases;
-            countryDeaths += covid.m_deaths;
-        }
+    std::for_each(m_covidCollection.begin(), m_covidCollection.end(), [&out, country](const Covid& covid) {
         if (country == "ALL" || covid.m_country == country) {
             out << covid << std::endl;
         }
