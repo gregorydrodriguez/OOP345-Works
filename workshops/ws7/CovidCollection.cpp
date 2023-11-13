@@ -56,6 +56,7 @@ void CovidCollection::display(std::ostream& out, const std::string& country) con
     } else {
         double countryPercCases = (static_cast<double>(countryCases) / static_cast<double>(totalCases)) * 100.0;
         double countryPercDeaths = (static_cast<double>(countryDeaths) / static_cast<double>(totalDeaths)) * 100.0;
+        out << "Displaying information of country = " + country;
         out << "| " << std::right << std::setw(84) << "Total cases in " + country + ": " + std::to_string(countryCases) << " |" << std::endl;
         out << "| " << std::right << std::setw(84) << "Total deaths in " + country + ": " + std::to_string(countryDeaths) << " |" << std::endl;
         out << "| " << std::right << std::setw(86) << country + " has " + std::to_string(countryPercCases) + "% of global cases and " + std::to_string(countryPercDeaths) + "% of global deaths |" << std::endl;
