@@ -56,3 +56,7 @@ workshops/ws7/test2
 workshops/ws7/test2.dSYM/Contents/Info.plist
 .gitignore
 workshops/ws7/test2.dSYM/Contents/Resources/DWARF/test2
+workshops/ms2/test.dSYM/Contents/Info.plist
+workshops/ms2/test.dSYM/Contents/Resources/DWARF/test
+.gitignore
+workshops/ms2/test
