@@ -57,7 +57,7 @@ CustomerOrder& CustomerOrder::operator=(CustomerOrder&& src) noexcept {
         for (size_t i = 0; i < m_cntItem; i++) {
             delete m_listItem[i];
         }
-        delete m_listItem;
+        delete[] m_listItem;
         m_name = std::move(src.m_name);
         m_product = std::move(src.m_product);
         m_cntItem = src.m_cntItem;
