@@ -23,22 +23,20 @@ DataBase<Profile> excludeRaw(const DataBase<Profile>& allProfiles, const DataBas
             if (allProfiles[i].m_age == bannedProfiles[j].m_age &&
                 allProfiles[i].m_name.first_name == bannedProfiles[j].m_name.first_name &&
                 allProfiles[i].m_name.last_name == bannedProfiles[j].m_name.last_name) {
-                    foundBanned = true;
-                    break;
+                foundBanned = true;
+                break;
             }
         }
-		if (!foundBanned) {
-            Profile* newProfile = new Profile(allProfiles[i]);
+        if (!foundBanned) {
+            Profile* newProfile = new Profile(allProfiles[i].m_name, allProfiles[i].m_address, allProfiles[i].m_age);
             try {
                 newProfile->validateAddress();
             } catch (const std::runtime_error& e) {
                 delete newProfile;
-				throw std::string("*** Invalid Address ***");
-			}
-			if (newProfile != nullptr) {
-                result += *newProfile;
+                throw std::string("*** Invalid Address ***");
             }
-		}
+            result += *newProfile;
+        }
     }
     return result;
 }
