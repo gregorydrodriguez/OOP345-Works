@@ -13,7 +13,7 @@ using namespace std;
 
 namespace sdds {
 DataBase<Profile> excludeRaw(const DataBase<Profile>& allProfiles, const DataBase<Profile>& bannedProfiles) {
-    DataBase<Profile> filteredProfiles;
+    DataBase<Profile> result;
     // TODO: Add your code here to build a collection of Profiles.
     //         The result should contain only profiles from `allProfiles`
     //         which are not in `bannedProfiles` using Raw Pointers.
@@ -33,13 +33,13 @@ DataBase<Profile> excludeRaw(const DataBase<Profile>& allProfiles, const DataBas
                 newProfile->validateAddress();
             } catch (const std::runtime_error& e) {
                 delete newProfile;
-                continue;
+				throw std::string("*** Invalid Address ***");
 			}
 			if (newProfile != nullptr) {
-                filteredProfiles += *newProfile;
+                result += *newProfile;
             }
 		}
     }
-    return filteredProfiles;
+    return result;
 }
 }  // namespace sdds
