@@ -40,6 +40,11 @@ class DataBase {
         database.push_back(object);
         return *this;
     }
+    
+    DataBase<T>& operator+=(std::unique_ptr<T>& object) {
+        database.push_back(object);
+        return *this;
+    }
 
     void display(std::ostream& os) const {
         os << std::fixed << std::setprecision(2);

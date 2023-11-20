@@ -36,7 +36,35 @@ DataBase<Profile> excludeRaw(const DataBase<Profile>& allProfiles, const DataBas
                 throw std::string("*** Invalid Address ***");
             }
             result += *newProfile;
-			delete newProfile;
+            delete newProfile;
+        }
+    }
+    return result;
+}
+
+DataBase<Profile> excludeSmart(const DataBase<Profile>& allProfiles, const DataBase<Profile>& bannedProfiles) {
+    DataBase<Profile> result;
+    // TODO: Add your code here to build a collection of Profiles.
+    //		   The result should contain only profiles from `allProfiles`
+    //         which are not in `bannedProfiles` using Smart Pointers.
+    for (size_t i = 0; i < allProfiles.size(); i++) {
+        bool foundBanned = false;
+        for (size_t j = 0; j < bannedProfiles.size(); j++) {
+            if (allProfiles[i].m_age == bannedProfiles[j].m_age &&
+                allProfiles[i].m_name.first_name == bannedProfiles[j].m_name.first_name &&
+                allProfiles[i].m_name.last_name == bannedProfiles[j].m_name.last_name) {
+                foundBanned = true;
+                break;
+            }
+        }
+        if (!foundBanned) {
+            std::unique_ptr<Profile> newProfile = std::make_unique<Profile>(allProfiles[i].m_name, allProfiles[i].m_address, allProfiles[i].m_age);
+            try {
+                newProfile->validateAddress();
+            } catch (const std::runtime_error& e) {
+                throw std::string("*** Invalid Address ***");
+            }
+            result += *newProfile;
         }
     }
     return result;
