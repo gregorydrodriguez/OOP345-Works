@@ -4,3 +4,18 @@ Name: Gregory Rodriguez
 E-mail: grodriguez13@myseneca.ca
 Student #: 127880227
 */
+
+1. the advantage that smart pointer syntax provides. Use example from your code to support your explanation.
+
+You don't have to manually free up memory.
+In p1 I deleted the memory allocated in excludeRaw.
+In p2 I implemented the smart pointers which handled its own clean up.
+
+2. the difference between raw and smart pointer syntax in your solution.
++= operator's parameter is just a T& object in part 1, while part 2 is a unique pointer reference of type t
+In the excludeRaw/excludeSmart: In raw I had to delete memory allocated before exiting the function. In smart
+I had to remove the delete.
+
+3. I believe the least obvious copy is the push_back function used in the += overload.
+
+4. Supposedly the compiler will generate a default move constructor if one is not explicitly stated.
