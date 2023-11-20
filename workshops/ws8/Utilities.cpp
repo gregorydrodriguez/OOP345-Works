@@ -31,7 +31,7 @@ DataBase<Profile> excludeRaw(const DataBase<Profile>& allProfiles, const DataBas
             Profile* newProfile = new Profile(allProfiles[i]);
             try {
                 newProfile->validateAddress();
-            } catch (std::runtime_error e) {
+            } catch (const std::runtime_error& e) {
                 delete newProfile;
                 continue;
 			}
