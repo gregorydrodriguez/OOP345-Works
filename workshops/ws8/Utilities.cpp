@@ -36,6 +36,7 @@ DataBase<Profile> excludeRaw(const DataBase<Profile>& allProfiles, const DataBas
                 throw std::string("*** Invalid Address ***");
             }
             result += *newProfile;
+			delete newProfile;
         }
     }
     return result;
