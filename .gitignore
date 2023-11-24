@@ -60,3 +60,16 @@ workshops/ms2/test.dSYM/Contents/Info.plist
 workshops/ms2/test.dSYM/Contents/Resources/DWARF/test
 .gitignore
 workshops/ms2/test
+workshops/ws8/test
+.gitignore
+workshops/ws8/test2
+workshops/ws8/test.dSYM/Contents/Info.plist
+workshops/ws8/test.dSYM/Contents/Resources/DWARF/test
+.gitignore
+.gitignore
+workshops/ws8/test2.dSYM/Contents/Info.plist
+.gitignore
+workshops/ws8/test2.dSYM/Contents/Resources/DWARF/test2
+workshops/ws9/test
+workshops/ws9/test.dSYM/Contents/Info.plist
+workshops/ws9/test.dSYM/Contents/Resources/DWARF/test
