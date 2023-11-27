@@ -111,7 +111,6 @@ int ProcessData::operator()(const std::string& target_file, double& avg, double&
     for (int i = 0; i < num_threads; i++) {
         avg += averages[i];
     }
-    avg /= num_threads;
     threads.clear();
     // Compute var using multiple threads
     auto bindComputeVar = std::bind(&computeVarFactor, std::placeholders::_1, std::placeholders::_2, total_items, avg, std::placeholders::_3);
