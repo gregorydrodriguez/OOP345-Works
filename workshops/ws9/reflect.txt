@@ -4,3 +4,31 @@ Name: Gregory Rodriguez
 E-mail: grodriguez13@myseneca.ca
 Student #: 127880227
 */
+
+1. Was there any benefit from using binary files in this workshop?
+
+Yes, binary uses less storage space. We are also able to read into the file and write into a binary file faster.
+Data was all represented in the size of (int), essentially this required no formatting for specific data within 
+the binary file.
+
+2. Why would be important to bind a function to its arguments, and how was it useful in this workshop.
+
+It wasn't useful in this workshop, it was a pure headache. The program could have used a lambda which is more readable
+and simple. With bind I had to wrap the reference to the bind variable with std::ref to "survive the move/copy"
+https://stackoverflow.com/questions/49235271/c-11-thread-creation-giving-me-a-attempt-to-use-a-deleted-function-error
+
+3. The advantages of using multiple threads, and how did you accomplish multi-threading in this workshop
+
+Due to the consistent data within the data file I was able to code logic to create threads that distributed evenly across
+the data:
+    for (int i = 0; i < num_threads; i++) {
+        threads.emplace_back(std::ref(bindComputeAvg), data + p_indices[i], p_indices[i + 1] - p_indices[i], std::ref(averages[i]));
+    }
+Truth is, most of the code was provided to the students in the constructor, as follows:
+    num_threads = n_threads;
+    averages = new double[num_threads]{};
+    variances = new double[num_threads]{};
+    p_indices = new int[num_threads + 1]{};
+    for (int i = 0; i < num_threads; i++)
+        p_indices[i] = i * (total_items / num_threads);
+    p_indices[num_threads] = total_items;
