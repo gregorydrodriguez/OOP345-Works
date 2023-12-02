@@ -17,7 +17,7 @@ class LineManager {
     Workstation* m_firstStation{};
 
     Workstation* findFirstStation(const std::vector<Workstation*>& stations);
-    Workstation* searchStations(const std::vector<Workstation*>& stations, const std::__1::vector<Workstation*>::const_iterator currStation);
+    Workstation* searchStations(const std::vector<Workstation*>& stations, const std::vector<Workstation*>::const_iterator currStation);
 
    public:
     LineManager(const std::string& file, const std::vector<Workstation*>& stations);

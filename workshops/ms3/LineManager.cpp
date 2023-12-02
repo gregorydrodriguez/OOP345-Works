@@ -27,8 +27,8 @@ LineManager::LineManager(const std::string& filename, const std::vector<Workstat
         bool more = true;
         std::string currentToken{};
         std::string nextToken{};
-        std::__1::vector<sdds::Workstation*>::const_iterator currentWorkstation{};
-        std::__1::vector<sdds::Workstation*>::const_iterator nextWorkstation{};
+        std::vector<sdds::Workstation*>::const_iterator currentWorkstation{};
+        std::vector<sdds::Workstation*>::const_iterator nextWorkstation{};
         currentToken = util.extractToken(line, pos, more);
         currentWorkstation = std::find_if(stations.begin(), stations.end(), [currentToken](const Workstation* station) {
             return station->getItemName() == currentToken;
@@ -96,7 +96,7 @@ Workstation* LineManager::findFirstStation(const std::vector<Workstation*>& stat
     return searchStations(stations, lastStation);
 }
 
-Workstation* LineManager::searchStations(const std::vector<Workstation*>& stations, std::__1::vector<sdds::Workstation*>::const_iterator currStation) {
+Workstation* LineManager::searchStations(const std::vector<Workstation*>& stations, std::vector<sdds::Workstation*>::const_iterator currStation) {
     auto prevStation = std::find_if(stations.begin(), stations.end(), [currStation](const Workstation* station) {
         return station->getNextStation() == *currStation;
     });
