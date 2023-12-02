@@ -59,7 +59,7 @@ void LineManager::reorderStations() {
 
 bool LineManager::run(std::ostream& os) {
     static size_t iteration;
-    os << "Line Manager Iteration : " << ++iteration << std::endl;
+    os << "Line Manager Iteration: " << ++iteration << std::endl;
     size_t oldCompletedSize = g_completed.size();
     if (!g_pending.empty()) {
         *m_firstStation += std::move(g_pending.front());
