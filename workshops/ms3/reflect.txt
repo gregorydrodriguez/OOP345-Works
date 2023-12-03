@@ -4,3 +4,80 @@ Name: Gregory Rodriguez
 E-mail: grodriguez13@myseneca.ca
 Student #: 127880227
 */
+
+Here I know you'll enjoy this youtuber. It's a cover for FF5 Clash on The Big Bridge. At 2:20
+it slaps harder than Rosa slapping Maria.
+https://www.youtube.com/watch?v=shEAqj2l2_k
+
+I scoffed when you said to Iraklis that he knew more anime than you. I already knew that was cap.
+When I asked you about Umineko, the fact that you knew what that was is evidence that you are,
+or were, a ultra weeb. Which is cool and chad af. Ain't no normie would know what Umineko is...
+Maybe Higurashi, though. Anyways, it sucked I was so busy trying to keep up and so many students
+needed your help that we couldn't talk about weeb stuff. Anyways, I wish you sunshine and happiness
+where ever you go, GTH.
+
+MS1 - Utilities
+
+In utilities we are reinforcing the knowledge revolving around string objects. We use many methods
+such as:
+
+find - it is used to locate a substring within a string and return the position.
+if it cannot be found it returns npos (which represents and invalid position).
+
+substr - it extracts a substring from the string object indicated by the declared start position
+and the declared ending position
+
+find_first_not_of - returns the position of the first occurence of anything that is not indicated
+in the parameter
+
+find_last_not_of - returns the position of the last character in the string that does not match
+the characters in the parameters
+
+Similar to our cheese workshop, we manipulate the string objects to tokenize and trim. This proves
+to be useful throughout the whole project. For example, the stations are loaded from text files
+and our constructor utilizes the utilities object to tokenize lines to fill the stations details
+
+MS1 - Station
+
+A station object manages the information regarding a product. It is a base class to our Workstation in
+ms3. It's members keep track of an item's name, description, unique serial number, and quantity in
+stock. It is our introductory to getters within the project. Since private members cannot be accessed
+directly, we have methods that will help the other modules access the private members.
+
+MS2 - CustomerOrder
+
+The CustomerOrder class is a representation of what a customer would like to order and is awaiting to be
+fulfilled via the assembly line. A contains a list of items that we compare against each Workstation 
+(We iterate these work stations in ms3) to see if we can fill the order or if the order is filled.
+CustomerOrder also reinforces our knowledge of an array of pointers, IE. example**. 
+
+MS3 - Workstation
+
+Our Workstation class derives from our station class. Our Workstation class are active stations along
+the assembly line. The workstation manages whether an order is filled/can be filled, and moving customer
+orders via pointers between queues and vectors. This class assisted in reinforcing commonly used
+container/standard template library methods such as:
+
+push_back() - adds an element to a container after the last index
+
+pop_front() - removes the element in front of a container and reduces the size of the container
+
+We also introduce our 3 global queues that represent the customer orders and whether they are in need
+to be processed, completed, or incomplete. For other modules to access these containers we need to 
+declare them in our header file within the sdds namespace prefixed with "extern". I could not define
+them within the same header as I would get a compilation error. The definition had to be completed
+in the a linked cpp file.
+
+MS3 - LineManager
+
+The LineManager manages the active Workstations and CustomerOrders. This module reinforces our knowledge
+on multiple things that we have learned along the semester. For example:
+
+We had to cycle through the workstations backwards to find the first workstation. A workstation
+contains a pointer to the next workstation. To logically accomplish this, I had to implement 2
+helper functions to recursively call a Workstation until the station could not be found within
+the pNextWorkstation member while iterating through every station. The last workstation was the only station in the file without A
+pNextWorkstation of nullptr. There were many ways to achieve this, such as iterating through
+the stations and finding the tokens that do not duplicate and has a pipe, "|", after the token.
+I completed it with lambdas and the recursive methodologies to reinforce the application of the two.
+
